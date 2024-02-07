@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.svg-clip-container {
+  clip-path: url(#ces-books-icon);
+}
+/* ha */
+.icon-a>.icon-div {
+  position: relative;
+  background-image: linear-gradient(20deg, #84cc16, #06b6d4);
+  z-index: 2;
+}
+
+.icon-a>.icon-div::before {
+  position: absolute;
+  content: "";
+  inset: 0; /* same as { top: 0; right: 0; bottom: 0; left: 0; } */
+  background-image: linear-gradient(200deg, #84cc16, #06b6d4);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+
+.icon-a:hover>.icon-div::before {
+  opacity: 1;
+}
+
+.icon-button {
+  position: relative;
+  background-image: linear-gradient(200deg, #84cc16, #06b6d4);
+  z-index: 2;
+}
+
+.icon-button::before {
+  border-radius: 0.75rem;
+  position: absolute;
+  content: "";
+  inset: 0; /* same as { top: 0; right: 0; bottom: 0; left: 0; } */
+  background-image: linear-gradient(20deg, #84cc16, #06b6d4);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+
+.icon-button:hover::before {
+  opacity: 1;
+}
+
+.h-100 {
+  height: 40rem;
+}
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(theme("foreground.rgb.);"
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(theme("background.end.rgb"))
+    )
+    rgb(theme("background.start.rgb"));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+} */

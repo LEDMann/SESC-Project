@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  ID    String @id @db.VarChar(20)
+  Hash  String
+  transactions Transaction[]
+}
+
+model Book {
+  ISBN    String @id @db.VarChar(13)
+  Title   String @db.VarChar(100)
+  Author  String @db.VarChar(100)
+  Year    Int
+  Copies  Int
+  Transactions Transaction[]
+}
+
+model Transaction {
+  ID              Int       @id @default(autoincrement())
+  Student_ID      String    @db.VarChar(20)
+  Student         Student   @relation(fields: [Student_ID], references: [ID],   onDelete: NoAction, onUpdate: NoAction)
+  BookISBN        String    @db.VarChar(13)
+  Book            Book      @relation(fields: [BookISBN],  references: [ISBN], onDelete: NoAction, onUpdate: NoAction)
+  Date_Borrowed   DateTime  @db.Date @default(now())
+  Date_Returned   DateTime  @db.Date @default(now())
+}
