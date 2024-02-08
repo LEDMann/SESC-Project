@@ -2,13 +2,14 @@
 import { Book, User } from "lucide-react";
 import { Button } from "../elements/button";
 import { Dark_Mode_Toggle } from "../elements/dark-mode-toggle";
+import { BookmanagePopover } from "../elements/BookManagePopover";
+import Link from "next/link";
 // import { Combobox, Popover, Tab } from '@headlessui/react'
 
 export function Header() {
     return (
-        <div className="flex gap-10 justify-between py-2 xl:px-64 lg:px-48 px-2 w-screen border-b border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900">
-            <div className="flex items-center flex-shrink-0">
-                {/* ces books icons */}
+        <>
+            <div className="flex gap-8 items-center flex-shrink-0">
                 <svg aria-hidden="true" width="0" height="0">
                     <defs>
                         <clipPath id="ces-books-icon">
@@ -17,22 +18,31 @@ export function Header() {
                         </clipPath>
                     </defs>
                 </svg>
-                <a className="icon-a pr-4" href="/">
+                <Link className="icon-a pr-4" href="/">
                     <div className="icon-div svg-clip-container w-48 h-14" >
                         <span />
                     </div>
-                </a>
-
-            </div>
-            <div className="flex gap-4 px-4 items-center flex-shrink-0">
-                {/* BookManagePopover /> */}
+                </Link>
+                <Link href="/library" className="w-24 h-14 transition-colors duration-200 hover:bg-slate-300 dark:hover:bg-slate-800 rounded-lg flex items-center">
+                    <span className="text-lg text-slate-800 dark:text-slate-200 w-full text-center">
+                        Library
+                    </span>
+                </Link>
+                <Link href="/owned" className="w-24 h-14 transition-colors duration-200  hover:bg-slate-300 dark:hover:bg-slate-800 rounded-lg flex items-center">
+                    <span className="text-lg text-slate-800 dark:text-slate-200 w-full text-center">
+                        Owned
+                    </span>
+                </Link>
+                <BookmanagePopover />
             </div>
             <div className="flex gap-6 px-4 items-center flex-shrink-0">
-                {/* <Dark_Mode_Toggle /> */}
-                <Button background="default" size="icon">
-                    <User className="text-slate-900 dark:text-slate-200"/>
-                </Button>
+                <Dark_Mode_Toggle />
+                <Link href="/login">
+                    <Button background="default" size="icon">
+                        <User className="text-slate-900 dark:text-slate-200"/>
+                    </Button>
+                </Link>
             </div>
-        </div>
+        </>
     )
 }
