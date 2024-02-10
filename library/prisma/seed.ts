@@ -6,9 +6,9 @@ async function main() {
     await prisma.student.deleteMany({})
     let student_confirm = await prisma.student.createMany({
         data: [
-            { ID: "c3781247", Hash: "pbkdf2:sha256:260000$U5Vve2Rf4RJUmHwl$a49732f2d1dfd577978a63dce847b2ddd9cac6203aaee52977b36d381d363c43" },
-            { ID: "c3922382", Hash: "pbkdf2:sha256:260000$U5Vve2Rf4RJUmHwl$a49732f2d1dfd577978a63dce847b2ddd9cac6203aaee52977b36d381d363c43" },
-            { ID: "admin", Hash: "pbkdf2:sha256:260000$TkImyuUDBP8Qpx4m$b0845e9575fa336bf53595bb92baf196d845f2ef1b26db448743af5242c0077d" },
+            { ID: "c3781247", Password: "pbkdf2:sha256:260000$U5Vve2Rf4RJUmHwl$a49732f2d1dfd577978a63dce847b2ddd9cac6203aaee52977b36d381d363c43", First_Name: "Andrea", Last_Name: "La Fauci De Leo", Email: "bosu@cesbooks.com" },
+            { ID: "c3922382", Password: "pbkdf2:sha256:260000$U5Vve2Rf4RJUmHwl$a49732f2d1dfd577978a63dce847b2ddd9cac6203aaee52977b36d381d363c43", First_Name: "Aryan", Last_Name: "Prince Santy", Email: "arynx@cesbooks.com" },
+            { ID: "admin", Password: "pbkdf2:sha256:260000$TkImyuUDBP8Qpx4m$b0845e9575fa336bf53595bb92baf196d845f2ef1b26db448743af5242c0077d", First_Name: "admin", Last_Name: "admin", Email: "admin@cesbooks.com" },
         ]
     })
     await prisma.book.deleteMany({})

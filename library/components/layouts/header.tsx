@@ -4,9 +4,12 @@ import { Button } from "../elements/button";
 import { Dark_Mode_Toggle } from "../elements/dark-mode-toggle";
 import { BookmanagePopover } from "../elements/BookManagePopover";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 // import { Combobox, Popover, Tab } from '@headlessui/react'
 
 export function Header() {
+    const { data: session } = useSession()
+    
     return (
         <>
             <div className="flex gap-8 items-center flex-shrink-0">
@@ -37,11 +40,18 @@ export function Header() {
             </div>
             <div className="flex gap-6 px-4 items-center flex-shrink-0">
                 <Dark_Mode_Toggle />
-                <Link href="/login">
-                    <Button background="default" size="icon">
-                        <User className="text-slate-900 dark:text-slate-200"/>
-                    </Button>
-                </Link>
+                { session ?
+                    <Link href="#">
+                        <Button background="default" size="icon">
+                            <User className="text-slate-900 dark:text-slate-200"/>
+                        </Button>
+                    </Link> :
+                    <Link href="/login">
+                        <Button background="default">
+                            Log in
+                        </Button>
+                    </Link>
+                }
             </div>
         </>
     )

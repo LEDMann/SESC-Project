@@ -12,7 +12,10 @@ datasource db {
 
 model Student {
   ID    String @id @db.VarChar(20)
-  Hash  String
+  Password  String @db.VarChar(250)
+  First_Name String @db.VarChar(20)
+  Last_Name String? @db.VarChar(20)
+  Email String @db.VarChar(50) @unique
   transactions Transaction[]
 }
 
